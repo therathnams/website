@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quotes | Food For Thought</title>
+  <style>* { box-sizing: border-box; }
+:root {
+  --paper: #fbf7ec;
+  --ink: #203d32;
+  --leaf: #38563f;
+  --line: #c9c7b5;
+  --rust: #98472d;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+body { margin: 0; }
+a { color: inherit; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid #ad502d; outline-offset: 4px; }
+main, header { width: min(76rem, 90%); margin-inline: auto; }
+header {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; padding: 1.4rem 0; border-bottom: 1px solid var(--line);
+}
+header nav, .bubbles, .pills, .tools { display: flex; flex-wrap: wrap; gap: .65rem; align-items: center; }
+.brand, h1, blockquote { font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif; }
+.brand { font-size: 1.2rem; font-weight: 600; text-decoration: none; }
+header nav a { font-size: .93rem; text-decoration: none; padding: .4rem .15rem; }
+header nav a[aria-current], header nav a:hover { text-decoration: underline; text-underline-offset: .4rem; }
+h1 { font-size: clamp(3.5rem, 8vw, 6.8rem); font-weight: 500; line-height: 1; letter-spacing: -.065em; margin: 0; }
+.home {
+  background: radial-gradient(ellipse at 20% 82%, #eaeedc, transparent 48%), radial-gradient(ellipse at 84% 20%, #f9e9cf, transparent 55%), var(--paper);
+}
+.home main { min-height: 100svh; display: grid; place-content: center; justify-items: center; text-align: center; padding-block: 3rem; }
+.home h1 { max-width: 12ch; font-size: clamp(4.1rem, 11vw, 10rem); }
+.ornament { display: flex; gap: 1rem; align-items: center; color: var(--rust); font: 2.5rem Georgia, serif; margin-bottom: 1.35rem; }
+.ornament::before, .ornament::after { content: ""; width: clamp(2.5rem, 8vw, 6rem); height: 1px; background: currentColor; opacity: .6; }
+.bubbles { justify-content: center; margin-top: 2.5rem; gap: 1rem; }
+.bubbles a { display: inline-flex; align-items: center; gap: 1.65rem; padding: .95rem 1.5rem; border: 1px solid #40553a; border-radius: 99rem; text-decoration: none; background: var(--leaf); color: #fffdf2; font-weight: 600; }
+.bubbles a + a { background: #f2dfc5; color: #633d2a; border-color: #bfa180; }
+.bubbles a:hover { box-shadow: 0 3px 0 #263c3026; transform: translateY(-2px); }
+.section-head { padding: clamp(2rem, 5vw, 4rem) 0 1.75rem; }
+.filters { padding: 1.25rem 0; border-block: 1px solid var(--line); }
+.search { display: block; width: min(100%, 36rem); border: 1px solid #848c7c; background: #fffdf7; color: var(--ink); padding: .85rem 1.1rem; border-radius: .7rem; }
+.tools { margin: 1.15rem 0 .65rem; gap: 1rem; }
+.tools strong { margin-right: .3rem; }
+.tools button { background: transparent; padding: .25rem 0; border: none; color: var(--leaf); text-decoration: underline; text-underline-offset: .18rem; }
+.tools button:disabled { color: #656961; cursor: default; text-decoration: none; }
+.pills button { padding: .46rem .95rem; border-radius: 10rem; color: var(--ink); background: transparent; border: 1px solid #8c9888; }
+.pills button[aria-pressed="true"] { background: var(--leaf); color: white; border-color: var(--leaf); }
+.pills button[aria-pressed="true"]::before { content: "✓"; margin-right: .35rem; }
+.status { color: #515c50; font-size: .9rem; margin: 1.25rem 0; }
+.grid { display: grid; gap: 1.05rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); padding-bottom: 3rem; }
+figure { display: flex; flex-direction: column; margin: 0; border: 1px solid #cbcbbb; border-radius: .95rem; background: #fffdf6; padding: clamp(1.25rem, 2.4vw, 2.15rem); }
+figure[hidden] { display: none; }
+.mark { font: 3.25rem/.8 Georgia, serif; color: var(--rust); }
+blockquote { margin: .3rem 0 1.25rem; font-size: clamp(1.18rem, 1.45vw, 1.48rem); line-height: 1.45; white-space: pre-line; overflow-wrap: anywhere; }
+figcaption { font-size: .94rem; font-weight: 600; }
+.tags { margin: auto 0 0; padding-top: 1rem; font-size: .8rem; color: #586752; }
+.empty { color: #50604f; font: 1.3rem/1.5 Georgia, serif; }
+.morning { grid-column: 1 / -1; }
+.morning blockquote { white-space: normal; }
+.morning .question { font-size: .8em; letter-spacing: .06em; font-weight: bold; margin: 0 0 1em; }
+.reading { columns: 20rem; column-gap: 2rem; }
+.reading p { break-inside: avoid; margin: 0 0 .85em; }
+.reflection { margin-bottom: 0; font-style: italic; }
+@media (max-width: 30rem) {
+  header { flex-wrap: wrap; }
+  .grid { gap: .8rem; }
+}
+</style>
+</head>
+<body class="quotes">
+  <header>
+    <a class="brand" href="index.html">Food For Thought</a>
+    <nav aria-label="Sections"><a href="quotes.html" aria-current="page">Quotes</a> <a href="recipes.html">Recipes</a></nav></header>
+  <main>
+  <div class="section-head"><h1>Quotes</h1></div>
+  <section class="filters" aria-label="Filter quotes">
+    <input class="search" id="search" type="search" aria-label="Search quotes by keyword" placeholder="Search quotes by keyword">
+    <div class="tools"><strong id="categories">Categories</strong>
+      <button type="button" id="select-all">Select all</button>
+      <button type="button" id="clear">Clear selection</button>
+    </div>
+    <div class="pills" role="group" aria-labelledby="categories">
+      <button type="button" value="Faith &amp; trust" aria-pressed="true">Faith &amp; trust</button>
+<button type="button" value="Gratitude &amp; joy" aria-pressed="true">Gratitude &amp; joy</button>
+<button type="button" value="Hope &amp; strength" aria-pressed="true">Hope &amp; strength</button>
+<button type="button" value="Morning affirmations" aria-pressed="true">Morning affirmations</button>
+<button type="button" value="Prayer" aria-pressed="true">Prayer</button>
+<button type="button" value="Wisdom" aria-pressed="true">Wisdom</button>
+<button type="button" value="Worship" aria-pressed="true">Worship</button>
+    </div>
+  </section>
+  <p class="status" id="status" role="status">46 quotes</p>
+  <section class="grid" aria-label="Quotes"><figure class="morning" data-categories="Morning affirmations|Faith &amp; trust|Prayer">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote><p class="question">WHAT DO YOU TELL YOURSELF EVERY MORNING AS YOU START THE DAY?</p><div class="reading"><p>Moses would say, &quot;Lord, if You don't go with us or before us, we are not going anywhere.&quot;</p>
+<p>Abraham would say, &quot;The Lord will provide.&quot;</p>
+<p>Jacob would say, &quot;I won't let go of You unless You bless me.&quot;</p>
+<p>Joshua would say, &quot;As for me and my house, we will serve the Lord.&quot;</p>
+<p>Samuel would say, &quot;Speak, Lord, for Your servant is listening.&quot;</p>
+<p>Nehemiah would say, &quot;The joy of the Lord is my strength.&quot;</p>
+<p>David would say, &quot;The Lord is my Shepherd, I shall not want.&quot; and &quot;This is the day that the Lord has made and I will rejoice and be glad in it.&quot;</p>
+<p>Solomon would say, &quot;Trust in the Lord, oh my soul, and lean not on your own understanding, in all your ways acknowledge Him and He shall direct your path.&quot;</p>
+<p>Isaiah would say, &quot;Arise and shine for my Glory has come.&quot; and &quot;No weapon formed against me shall prosper.&quot;</p>
+<p>Jeremiah would say, &quot;The Lord has plans to prosper me and not to harm or fail me.&quot;</p>
+<p>Jabez would say, &quot;Oh, that you may bless me and enlarge my territory.&quot;</p>
+<p>Shadrach, Meshach and Abednego would say, &quot;We will not bow down to any image but will serve the Lord.&quot;</p>
+<p>Ezekiel would say, &quot;Any dry bones in my life, live again.&quot;</p></div><p class="reflection">Choose your daily statement of faith. Meditate on it!</p></blockquote>
+    <p class="tags">Morning affirmations · Faith &amp; trust · Prayer</p>
+  </figure>
+<figure data-categories="Wisdom|Worship">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Don't settle for fast food when you can feast at God's banquet.</blockquote><figcaption>Woodrow Kroll</figcaption>
+    <p class="tags">Wisdom · Worship</p>
+  </figure>
+<figure data-categories="Hope &amp; strength|Faith &amp; trust">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>If God's mind was small enough for me to understand, he wouldn't be God. Sometimes I can't stand being in this wheelchair, but there God's grace takes over. Even in my handicap, God has a plan and purpose for my life.</blockquote><figcaption>Joni Erickson Tada</figcaption>
+    <p class="tags">Hope &amp; strength · Faith &amp; trust</p>
+  </figure>
+<figure data-categories="Faith &amp; trust|Hope &amp; strength">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Whether God takes you out of the situation or brings you through it, trust him. He's working for your good and his glory</blockquote>
+    <p class="tags">Faith &amp; trust · Hope &amp; strength</p>
+  </figure>
+<figure data-categories="Worship">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>What is sin? It is the glory of God not honored. The holiness of God not reverenced. The greatness of God not admired. The power of God not praised. The truth of God not sought. The wisdom of God not esteemed. The beauty of God not treasured. The goodness of God not savored. The faithfulness of God not trusted. The commandments of God not obeyed. The justice of God not respected. The wrath of God not feared. The grace of God not cherished. The presence of God not prized. The person of God not loved. That is sin.</blockquote><figcaption>John Piper</figcaption>
+    <p class="tags">Worship</p>
+  </figure>
+<figure data-categories="Worship|Wisdom">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>If you don't feel strong desires for the manifestation of the glory of God, it is not because you have drunk deeply and are satisfied. It is because you have nibbled so long at the table of the world. Your soul is stuffed with small things, and there is no room for the great.</blockquote><figcaption>John Piper</figcaption>
+    <p class="tags">Worship · Wisdom</p>
+  </figure>
+<figure data-categories="Wisdom|Prayer">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>My feelings are not God. God is God. My feelings do not define truth. God’s word defines truth. My feelings are echoes and responses to what my mind perceives. And sometimes - many times - my feelings are out of sync with the truth. When that happens - and it happens every day in some measure - I try not to bend the truth to justify my imperfect feelings, but rather, I plead with God: Purify my perceptions of your truth and transform my feelings so that they are in sync with the truth.</blockquote><figcaption>John Pipe</figcaption>
+    <p class="tags">Wisdom · Prayer</p>
+  </figure>
+<figure data-categories="Wisdom|Hope &amp; strength">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>According to the Bureau of Standards, “A dense fog covering seven city blocks, to a depth of 100 feet, is composed of something less than one glass of water.” So, if all the fog covering seven city blocks, 100 feet deep, were collected and held in a single drinking glass, it would not even fill it. And this could be compared to our worries. If we can see into the future and if we could see our problems in their true light, they wouldn’t blind us to the world, to living itself, but instead could be relegated to their true size and place. 
+
+Real, legitimate worries: 8 percent. Only 8 percent of your worries are worth concerning yourself about. Ninety-two percent are pure fog with no substance at all.</blockquote>
+    <p class="tags">Wisdom · Hope &amp; strength</p>
+  </figure>
+<figure data-categories="Hope &amp; strength|Faith &amp; trust">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Occasionally, weep deeply over the life you hoped would be. Grieve the losses. Then wash your face. Trust God. And embrace the life you have.</blockquote><figcaption>John Piper</figcaption>
+    <p class="tags">Hope &amp; strength · Faith &amp; trust</p>
+  </figure>
+<figure data-categories="Faith &amp; trust">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Faith is total trust in the wisdom of God, absolute confidence in the power of God, and complete submission to the sovereign will of God.</blockquote><figcaption>Renuka</figcaption>
+    <p class="tags">Faith &amp; trust</p>
+  </figure>
+<figure data-categories="Hope &amp; strength">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>I do not at all understand the mystery of grace - only that it meets us where we are but does not leave us where it found us.</blockquote><figcaption>Anne Lamott</figcaption>
+    <p class="tags">Hope &amp; strength</p>
+  </figure>
+<figure data-categories="Gratitude &amp; joy|Faith &amp; trust">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Our joy is in proportion to our trust. Our trust is in proportion to our knowledge of GOD.</blockquote><figcaption>C. Campbell Morgan</figcaption>
+    <p class="tags">Gratitude &amp; joy · Faith &amp; trust</p>
+  </figure>
+<figure data-categories="Gratitude &amp; joy">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>God has two dwellings; one in heaven, and the other in a meek and thankful heart.</blockquote><figcaption>Izaak Walton</figcaption>
+    <p class="tags">Gratitude &amp; joy</p>
+  </figure>
+<figure data-categories="Prayer">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Prayer is not a convenient device of imposing our will upon God, or for bending His will to ours, but the prescribed way of subordinating our will to His. It is by prayer that we seek God’s will, embrace it and align ourselves with it. Every true prayer is a variation on the theme, ‘Your will be done.’ Our Master taught us to say this in the pattern prayer He gave us and added the supreme example of it in Gethsemane</blockquote><figcaption>John Stott</figcaption>
+    <p class="tags">Prayer</p>
+  </figure>
+<figure data-categories="Faith &amp; trust|Hope &amp; strength">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Trust is not a passive state of mind. It is a vigorous act of the soul by which we choose to lay hold on the promises of God and cling to them despite circumstances that at times seeks to overwhelms us.</blockquote><figcaption>Jerry Bridges</figcaption>
+    <p class="tags">Faith &amp; trust · Hope &amp; strength</p>
+  </figure>
+<figure data-categories="Faith &amp; trust">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>You may never know that JESUS is all you need, until JESUS is all you have.</blockquote><figcaption>Corrie ten Boom</figcaption>
+    <p class="tags">Faith &amp; trust</p>
+  </figure>
+<figure data-categories="Faith &amp; trust">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>All I have seen teaches me to trust the Creator for all I have not seen.</blockquote><figcaption>Ralph Waldo Emerson</figcaption>
+    <p class="tags">Faith &amp; trust</p>
+  </figure>
+<figure data-categories="Worship|Gratitude &amp; joy">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>God is most glorified in us when we are most satisfied in Him</blockquote><figcaption>John Piper</figcaption>
+    <p class="tags">Worship · Gratitude &amp; joy</p>
+  </figure>
+<figure data-categories="Hope &amp; strength|Faith &amp; trust">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>This is what the past is for! Every experience God gives us, every person He puts in our lives is the perfect preparation for the future that only He can see.</blockquote><figcaption>Corrie ten Boom</figcaption>
+    <p class="tags">Hope &amp; strength · Faith &amp; trust</p>
+  </figure>
+<figure data-categories="Hope &amp; strength|Faith &amp; trust">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>There are always uncertainties ahead, but there is always one certainty--God's will is good.</blockquote><figcaption>Vernon Paterson</figcaption>
+    <p class="tags">Hope &amp; strength · Faith &amp; trust</p>
+  </figure>
+<figure data-categories="Hope &amp; strength|Faith &amp; trust">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>There is no circumstance, no trouble, no testing, that can ever touch me until, first of all, it has gone past God and past Christ, right through to me. If it has come that far, it has come with a great purpose, which I may not understand at the moment. But I refuse to become panicky, as I lift up my eyes to Him and accept it as coming from the throne of God for some great purpose of blessing to my own heart.</blockquote><figcaption>Alan Redpath</figcaption>
+    <p class="tags">Hope &amp; strength · Faith &amp; trust</p>
+  </figure>
+<figure data-categories="Faith &amp; trust">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>It is a glorious thing to know that your Father God makes no mistakes in directing or permitting that which crosses the path of your life. It is the glory of God to conceal a matter. It is our glory to trust Him, no matter what.</blockquote><figcaption>Joni Eareckson Tada</figcaption>
+    <p class="tags">Faith &amp; trust</p>
+  </figure>
+<figure data-categories="Faith &amp; trust">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Part of what it means to be God's children is to accept that He knows, and that He will bring what is best into our lives - not what we want every time, but what is ultimately best for us.</blockquote><figcaption>Charles Paul Conn</figcaption>
+    <p class="tags">Faith &amp; trust</p>
+  </figure>
+<figure data-categories="Faith &amp; trust|Worship">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>God is God. Because He is God, He is worthy of my trust and obedience. I will find rest nowhere but in His holy will, a will that is unspeakably beyond my largest notions of what He is up to.</blockquote><figcaption>Elisabeth Elliot</figcaption>
+    <p class="tags">Faith &amp; trust · Worship</p>
+  </figure>
+<figure data-categories="Prayer|Gratitude &amp; joy">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Keep praying, but be thankful that God's answers are wiser than your prayers !</blockquote><figcaption>William Culbertson</figcaption>
+    <p class="tags">Prayer · Gratitude &amp; joy</p>
+  </figure>
+<figure data-categories="Faith &amp; trust">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Don't trust to hold God's hand; let Him hold yours. Let Him do the holding, and you the trusting.</blockquote><figcaption>Hammer William Webb-Peploe</figcaption>
+    <p class="tags">Faith &amp; trust</p>
+  </figure>
+<figure data-categories="Wisdom|Faith &amp; trust">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Worry is practical atheism and an affront to God.</blockquote><figcaption>R. H Mounce</figcaption>
+    <p class="tags">Wisdom · Faith &amp; trust</p>
+  </figure>
+<figure data-categories="Prayer|Hope &amp; strength">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Give me a stout heart to bear my own burdens. Give me a willing heart to bear the burdens of others. Give me a believing heart to cast all burdens upon Thee, O Lord.</blockquote><figcaption>John Baillie</figcaption>
+    <p class="tags">Prayer · Hope &amp; strength</p>
+  </figure>
+<figure data-categories="Hope &amp; strength|Faith &amp; trust">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Circumstances may appear to wreck our lives and God's plans, but God is not helpless among the ruins. God's love is still He comes in and takes the calamity and uses it victoriously, working out His wonderful plan of love.</blockquote><figcaption>Eric Liddell</figcaption>
+    <p class="tags">Hope &amp; strength · Faith &amp; trust</p>
+  </figure>
+<figure data-categories="Faith &amp; trust|Worship">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Give God His glory by resting in Him, by trusting Him fully, by waiting patiently for Him. This patience honours Him greatly. It leaves Him, as God on the throne, to do His work. It yields self wholly into His hands. It lets God be God.</blockquote><figcaption>Andrew Murray</figcaption>
+    <p class="tags">Faith &amp; trust · Worship</p>
+  </figure>
+<figure data-categories="Worship">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>We are called to live Coram Deo, defined as: before the presence of God, under the authority of God and to the glory of God.</blockquote><figcaption>R. C. Sproul</figcaption>
+    <p class="tags">Worship</p>
+  </figure>
+<figure data-categories="Faith &amp; trust">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>I've learned this: At times when life makes no sense, trusting god completely makes perfect sense.</blockquote>
+    <p class="tags">Faith &amp; trust</p>
+  </figure>
+<figure data-categories="Hope &amp; strength|Faith &amp; trust">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Trusting GOD would not make the mountain smaller, but will make climbing easier. Do not ask him for a lighter load, but ask him for a stronger back.</blockquote>
+    <p class="tags">Hope &amp; strength · Faith &amp; trust</p>
+  </figure>
+<figure data-categories="Faith &amp; trust">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>None of us knows what might happen even the next minute, yet still we go forward. Because we trust. Because we have Faith.</blockquote>
+    <p class="tags">Faith &amp; trust</p>
+  </figure>
+<figure data-categories="Gratitude &amp; joy|Faith &amp; trust">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Look up and find God, Look back and thank God, Look forward and trust God, Look around and serve God.</blockquote>
+    <p class="tags">Gratitude &amp; joy · Faith &amp; trust</p>
+  </figure>
+<figure data-categories="Prayer">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>We tend to use prayer as a last resort, but God wants it to be our first line of defense. We pray when there's nothing else we can do, but God wants us to pray before we do anything at all.
+
+Most of us would prefer, however, to spend our time doing something that will get immediate results. We don't want to wait for God to resolve matters in His good time because His idea of 'good time' is seldom in sync with ours.</blockquote><figcaption>Oswald Chambers</figcaption>
+    <p class="tags">Prayer</p>
+  </figure>
+<figure data-categories="Wisdom">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Time cannot be saved, it can only be spent, and if not spent wisely and well, it is wasted.</blockquote>
+    <p class="tags">Wisdom</p>
+  </figure>
+<figure data-categories="Prayer">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Four things let us ever keep in mind: God hears prayer, God heeds prayer, God answers prayer, and God delivers by prayer.</blockquote><figcaption>E. M. Bounds</figcaption>
+    <p class="tags">Prayer</p>
+  </figure>
+<figure data-categories="Prayer|Worship">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Prayer is the acid test of devotion.</blockquote><figcaption>Samuel Chadwick</figcaption>
+    <p class="tags">Prayer · Worship</p>
+  </figure>
+<figure data-categories="Worship|Hope &amp; strength">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>The deepest level of worship is praising God inspite of pain, trusting Him during a trial, surrendering while suffering, and loving Him when He seems distant.</blockquote><figcaption>Rick Warren</figcaption>
+    <p class="tags">Worship · Hope &amp; strength</p>
+  </figure>
+<figure data-categories="Prayer|Hope &amp; strength|Faith &amp; trust">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Dear Father in Heaven, When I remember the story of Joseph's life (in Genesis), I realize how you want so much more for me than I could ever dream of. I also see how you can turn what man means for evil into what you mean for good. Please bring this to my mind whenever I'm feeling doubt and confusion; whenever I'm feeling oppressed and alone; whenever I'm feeling unjustly treated; whenever I think that I don't have something I need. I know that you are in control. I pray that I will always allow you to do your work and that I will not interfere in your plans for me. Please give me strength and fill me with your desires for me. Thank you, loving Father. In Jesus' name, amen.</blockquote>
+    <p class="tags">Prayer · Hope &amp; strength · Faith &amp; trust</p>
+  </figure>
+<figure data-categories="Prayer">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Prayer is not attempting to get our will done in heaven but His will done on earth.</blockquote><figcaption>Bill Thrasher</figcaption>
+    <p class="tags">Prayer</p>
+  </figure>
+<figure data-categories="Prayer">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Prayer is not about getting what we want – the fulfillment of our will; it is about learning what God wants – the bending of our will to God’s will.</blockquote><figcaption>Darrell Guder</figcaption>
+    <p class="tags">Prayer</p>
+  </figure>
+<figure data-categories="Prayer">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>If I throw out a boathook from the boat and catch hold of the shore and pull, do I pull the shore to me, or do I pull myself to the shore? Prayer is not pulling God to my will, but the aligning of my will to the will of God.</blockquote><figcaption>E S Jones</figcaption>
+    <p class="tags">Prayer</p>
+  </figure>
+<figure data-categories="Prayer">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>Prayer is not so much an act as it is an attitude – an attitude of dependency, dependency upon God.</blockquote><figcaption>A W Pink</figcaption>
+    <p class="tags">Prayer</p>
+  </figure>
+<figure data-categories="Prayer|Faith &amp; trust">
+    <span class="mark" aria-hidden="true">“</span>
+    <blockquote>God is always faithful to answer our prayers. Sometimes His answer is a much desired “yes.” Sometimes His answer is a merciful “no.” Sometimes His answer is a faith-building “not yet.” And sometimes . . . sometimes, when an answer cannot be found, His answer is simply “Trust Me.</blockquote>
+    <p class="tags">Prayer · Faith &amp; trust</p>
+  </figure></section></main>
+  <script>const search = document.querySelector('#search');
+const pills = [...document.querySelectorAll('.pills button')];
+const cards = [...document.querySelectorAll('.grid figure')];
+const selectAll = document.querySelector('#select-all');
+const clear = document.querySelector('#clear');
+const status = document.querySelector('#status');
+const normalize = text => text.toLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, ' ').trim();
+const entries = cards.map(card => ({
+  card,
+  text: normalize(card.querySelector('blockquote').textContent),
+  categories: card.dataset.categories.split('|')
+}));
+
+function update() {
+  const selected = new Set(pills.filter(pill => pill.getAttribute('aria-pressed') === 'true').map(pill => pill.value));
+  const words = normalize(search.value).split(' ').filter(Boolean);
+  let count = 0;
+  for (const { card, text, categories } of entries) {
+    const matches = categories.some(category => selected.has(category)) && words.every(word => text.includes(word));
+    card.hidden = !matches;
+    if (matches) count++;
+  }
+  selectAll.disabled = selected.size === pills.length;
+  clear.disabled = selected.size === 0;
+  if (!selected.size) status.textContent = 'Select a category to see quotes.';
+  else if (!count) status.textContent = 'No matching quotes. Try another keyword or category.';
+  else status.textContent = count + (count === 1 ? ' quote' : ' quotes');
+}
+
+function setAll(value) {
+  for (const pill of pills) pill.setAttribute('aria-pressed', value);
+  update();
+}
+for (const pill of pills) {
+  pill.addEventListener('click', () => {
+    pill.setAttribute('aria-pressed', pill.getAttribute('aria-pressed') !== 'true');
+    update();
+  });
+}
+selectAll.addEventListener('click', () => setAll(true));
+clear.addEventListener('click', () => setAll(false));
+search.addEventListener('input', update);
+update();
+</script>
+</body>
+</html>
