@@ -61,6 +61,21 @@ blockquote { margin: .3rem 0 1.25rem; font-size: clamp(1.18rem, 1.45vw, 1.48rem)
 figcaption { font-size: .94rem; font-weight: 600; }
 .tags { margin: auto 0 0; padding-top: 1rem; font-size: .8rem; color: #586752; }
 .empty { color: #50604f; font: 1.3rem/1.5 Georgia, serif; }
+.recipe-card { position: relative; width: 100%; height: 100%; min-height: 8rem; display: grid; align-content: start; gap: .7rem; text-align: left; color: var(--ink); background: #fffdf6; border: 1px solid var(--line); border-radius: .95rem; padding: 1.45rem 3rem 1.5rem 1.45rem; }
+.recipe-card:hover { border-color: var(--leaf); background: #f4f3e8; }
+.recipe-name, #recipe-title { font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif; }
+.recipe-name { font-size: 1.65rem; line-height: 1.16; }
+.kind { font-size: .85rem; font-weight: 600; color: #66533f; }
+.open-icon { position: absolute; top: 1.3rem; right: 1.15rem; color: var(--rust); }
+#reader { position: fixed; inset: 0; margin: 0; width: 100%; height: 100%; max-width: none; max-height: none; border: 0; padding: 0; background: var(--paper); color: var(--ink); overflow-y: auto; overscroll-behavior: contain; }
+body:has(#reader[open]) { overflow: hidden; }
+.reader-tools { position: sticky; top: 0; background: var(--paper); border-bottom: 1px solid var(--line); padding: .9rem max(5%, calc((100% - 43rem)/2)); }
+.reader-tools button { white-space: nowrap; border: 1px solid var(--leaf); color: var(--ink); background: #fffdf6; border-radius: 2rem; padding: .55rem 1rem; }
+.reader-page { width: min(90%,43rem); margin: 2.5rem auto 5rem; }
+#recipe-title { font-weight: 500; font-size: clamp(2.5rem, 6vw, 4.2rem); line-height: 1.06; margin: .35em 0 .6em; letter-spacing: -.04em; }
+#recipe-body { font-size: 1.06rem; line-height: 1.65; overflow-wrap: anywhere; }
+#recipe-body h3 { font: 600 1.65rem Georgia, serif; border-top: 1px solid var(--line); padding-top: 1em; margin: 1.1em 0 .65em; }
+#recipe-body p { margin: .5em 0; }
 .morning { grid-column: 1 / -1; }
 .morning blockquote { white-space: normal; }
 .morning .question { font-size: .8em; letter-spacing: .06em; font-weight: bold; margin: 0 0 1em; }
@@ -344,14 +359,16 @@ Most of us would prefer, however, to spend our time doing something that will ge
   </figure></section></main>
   <script>const search = document.querySelector('#search');
 const pills = [...document.querySelectorAll('.pills button')];
-const cards = [...document.querySelectorAll('.grid figure')];
+const cards = [...document.querySelectorAll('.grid [data-categories]')];
+const noun = document.body.classList.contains('recipes') ? 'recipe' : 'quote';
 const selectAll = document.querySelector('#select-all');
 const clear = document.querySelector('#clear');
 const status = document.querySelector('#status');
-const normalize = text => text.toLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, ' ').trim();
+const normalize = text => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, ' ').trim();
 const entries = cards.map(card => ({
   card,
-  text: normalize(card.querySelector('blockquote').textContent),
+  text: normalize(card.querySelector('blockquote')?.textContent ??
+    card.querySelector('.recipe-name').textContent + ' ' + card.querySelector('template').content.textContent),
   categories: card.dataset.categories.split('|')
 }));
 
@@ -366,9 +383,9 @@ function update() {
   }
   selectAll.disabled = selected.size === pills.length;
   clear.disabled = selected.size === 0;
-  if (!selected.size) status.textContent = 'Select a category to see quotes.';
-  else if (!count) status.textContent = 'No matching quotes. Try another keyword or category.';
-  else status.textContent = count + (count === 1 ? ' quote' : ' quotes');
+  if (!selected.size) status.textContent = `Select a category to see ${noun}s.`;
+  else if (!count) status.textContent = `No matching ${noun}s. Try another keyword or category.`;
+  else status.textContent = `${count} ${noun}${count === 1 ? '' : 's'}`;
 }
 
 function setAll(value) {
